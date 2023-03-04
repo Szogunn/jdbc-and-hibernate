@@ -1,5 +1,7 @@
 package pl.sda.orange2.lambda;
 
+import pl.sda.orange2.lambda.coffeeExample.CoffeeMaker;
+
 public class LambdaExercises {
 
     public static void main(String[] args) {
@@ -27,5 +29,18 @@ public class LambdaExercises {
             System.out.println("second");
         };
 
+
+        System.out.println("---------------------");
+        System.out.println("Coffee Time");
+
+        CoffeeMaker myCoffeeMaker = (int water, String coffeeType) -> " Zrobione ";
+
+        CoffeeMaker myCoffeeMaker2 = (int water, String coffeeType) -> {
+            System.out.println("Preparing coffee ...");
+            return " Zrobione ";
+        };
+
+        //jeżeli nadpisujemy jedną metodę to InteliJ przypilnuję nas że typy będą się zgadzały z definicją metody
+        CoffeeMaker myCoffeeMaker3 = (water, coffeeType) -> " Zrobione ";
     }
 }
