@@ -41,6 +41,10 @@ public class LambdaExercises {
         };
 
         //jeżeli nadpisujemy jedną metodę to InteliJ przypilnuję nas że typy będą się zgadzały z definicją metody
-        CoffeeMaker myCoffeeMaker3 = (water, coffeeType) -> " Zrobione ";
+        CoffeeMaker myCoffeeMaker3 = (water, coffeeType) -> coffeeType +" Coffee done ";
+
+        String myCoffe = myCoffeeMaker3.prepare(5, "small");
+        System.out.println(myCoffe);
+
     }
 }
