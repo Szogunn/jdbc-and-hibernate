@@ -22,7 +22,8 @@ public class LambdaExercises {
 
         anonymousClassReference.silnoreki();
 
-        BoysDontCry firstLambda = () -> {};
+        BoysDontCry firstLambda = () -> {
+        };
         BoysDontCry secondLambda = () -> System.out.println("Boys Dont Cry second Lambda");
         BoysDontCry thirdLambda = () -> {
             System.out.println("first");
@@ -41,7 +42,7 @@ public class LambdaExercises {
         };
 
         //jeżeli nadpisujemy jedną metodę to InteliJ przypilnuję nas że typy będą się zgadzały z definicją metody
-        CoffeeMaker myCoffeeMaker3 = (water, coffeeType) -> coffeeType +" Coffee done ";
+        CoffeeMaker myCoffeeMaker3 = (water, coffeeType) -> coffeeType + " Coffee done ";
 
         String myCoffe = myCoffeeMaker3.prepare(5, "small");
         System.out.println(myCoffe);
