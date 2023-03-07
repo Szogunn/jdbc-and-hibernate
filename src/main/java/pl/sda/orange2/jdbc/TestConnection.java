@@ -16,6 +16,9 @@ public class TestConnection {
                 FROM TEST
                 """;
 
+
+        ResultSet queryResult = null;
+
         try {
             var one = "one";
             var h2Connection = DriverManager.getConnection(H2Config.DB_URL,
@@ -24,7 +27,7 @@ public class TestConnection {
             System.out.println("got connection: " + (h2Connection != null));
 
             Statement queryStatment = h2Connection.createStatement();
-            ResultSet queryResult = queryStatment.executeQuery(query);
+            queryResult = queryStatment.executeQuery(query);
 
             queryResult.next();
             System.out.println(queryResult.getInt(1));
@@ -32,7 +35,18 @@ public class TestConnection {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            System.out.println("Finally I Know It");
+            if (queryResult!=null){
+                try {
+                    queryResult.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
+
+        System.out.println("The End");
 
     }
 }
