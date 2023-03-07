@@ -28,7 +28,7 @@ public class TestConnection {
 
             queryResult.next();
             System.out.println(queryResult.getInt(1));
-            System.out.println(queryResult.getString(1));
+            System.out.println(queryResult.getString(2));
 
         } catch (SQLException e) {
             e.printStackTrace();
