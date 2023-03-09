@@ -94,6 +94,22 @@ public class CarDao implements DataAccess<CarRec, Long> {
 
     @Override
     public void deletyById(Long id) {
+//TODO: validate query
+        String deleteCatByID = """
+                DELETE
+                FROM CARS
+                WHERE ID = ?
+                """;
 
+        try {
+            PreparedStatement queryStatement = dbConnection.prepareStatement(deleteCatByID);
+            queryStatement.setLong(1, id);
+            int numberOfTouchedRecords = queryStatement.executeUpdate();
+            System.out.println(numberOfTouchedRecords);
+
+        } catch (SQLException e) {
+            System.out.println("Unexpected SQL exception occurred");
+            e.printStackTrace();
+        }
     }
 }

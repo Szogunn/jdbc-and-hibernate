@@ -27,10 +27,20 @@ public class CarDaoExample {
             CarRec existingCar = carDao.findById(1L);
             System.out.println("Existing car: " + existingCar);
 
+            System.out.println("Find By ID by ID which is not in db");
+            CarRec notExistingCar = carDao.findById(5L);
+            System.out.println("Existing car: " + notExistingCar);
+
+
+            System.out.println("Delete by ID");
+            carDao.deletyById(3L);
+
+            System.out.println(carDao.findAll());
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
 
 
     }
