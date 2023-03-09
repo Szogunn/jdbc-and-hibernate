@@ -2,11 +2,9 @@ package pl.sda.orange2.dao;
 
 import pl.sda.orange2.entity.CarRec;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 //Data Access Object
 //Warstwa dostępu do bazy danych
@@ -20,6 +18,32 @@ public class CarDao implements DataAccess<CarRec, Long> {
 
     @Override
     public void save(CarRec car) {
+
+        String saveQuery;
+        if (car.id() != null) {
+            //update
+
+        } else {
+            //save
+            saveQuery = """
+                    INSERT INTO CARS
+                    (COLOR, BRAND, MODEL)
+                    VALUES (?,?,?)
+                    """;
+
+            try {
+                PreparedStatement queryStatement = dbConnection.prepareStatement(saveQuery);
+                queryStatement.setString(1, car.color());
+                queryStatement.setString(2, car.brand());
+                queryStatement.setString(3, car.model());
+                int result = queryStatement.executeUpdate();
+
+
+            } catch (SQLException e) {
+                System.out.println("Unexpected SQL exception occurred");
+                e.printStackTrace();
+            }
+        }
 
     }
 
